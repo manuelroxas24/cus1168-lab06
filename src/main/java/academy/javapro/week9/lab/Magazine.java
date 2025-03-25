@@ -3,7 +3,8 @@ package academy.javapro.week9.lab;
 /**
  * Represents a magazine in the library system.
  */
-public class Magazine implements LibraryItem {
+public class Magazine implements LibraryItem
+{
     private final String title;
     private final int issueNumber;
     private final String publicationDate;
@@ -14,15 +15,19 @@ public class Magazine implements LibraryItem {
      * @param issueNumber the issue number
      * @param publicationDate the publication date as a string
      */
-    public Magazine(String title, int issueNumber, String publicationDate) {
-        if (title == null || title.trim().isEmpty()) {
-            // TODO: Throw an IllegalArgumentException with the message "Title cannot be null or empty".
+    public Magazine(String title, int issueNumber, String publicationDate)
+    {
+        if (title == null || title.trim().isEmpty())
+        {
+            throw new IllegalArgumentException("Title cannot be null or empty");
         }
-        if (issueNumber <= 0) {
-            // TODO: Throw an IllegalArgumentException with the message "Issue number must be positive".
+        if (issueNumber <= 0)
+        {
+            throw new IllegalArgumentException("Issue number must be positive");
         }
-        if (publicationDate == null || publicationDate.trim().isEmpty()) {
-            // TODO: Throw an IllegalArgumentException with the message "Publication date cannot be null or empty".
+        if (publicationDate == null || publicationDate.trim().isEmpty())
+        {
+            throw new IllegalArgumentException("Publication date cannot be null or empty");
         }
 
         this.title = title;
@@ -34,41 +39,41 @@ public class Magazine implements LibraryItem {
      * Gets the issue number of the magazine.
      * @return the issue number
      */
-    public int getIssueNumber() {
-        // TODO: return the issueNumber field.
-        throw new UnsupportedOperationException("Method not implemented");
+    public int getIssueNumber()
+    {
+        return issueNumber;
     }
 
     /**
      * Gets the publication date of the magazine.
      * @return the publication date
      */
-    public String getPublicationDate() {
-        // TODO: return the publicationDate field.
-        throw new UnsupportedOperationException("Method not implemented");
+    public String getPublicationDate()
+    {
+        return publicationDate;
     }
 
     @Override
-    public String getTitle() {
-        // TODO: return the title field.
-        throw new UnsupportedOperationException("Method not implemented");
+    public String getTitle()
+    {
+        return title;
     }
 
     @Override
-    public String getItemType() {
-        // TODO: return "Magazine".
-        throw new UnsupportedOperationException("Method not implemented");
-    }
-
-    // TODO: Implement the getUniqueIdentifier method from the LibraryItem interface.
-    @Override
-    public String getUniqueIdentifier() {
-        // TODO: Return the title of the magazine followed by a hyphen and the issue number.
-        throw new UnsupportedOperationException("Method not implemented");
+    public String getItemType()
+    {
+        return "Magazine";
     }
 
     @Override
-    public String toString() {
+    public String getUniqueIdentifier()
+    {
+        return title + "-" + issueNumber;
+    }
+
+    @Override
+    public String toString()
+    {
         return "Magazine{" +
                 "title='" + title + '\'' +
                 ", issueNumber=" + issueNumber +
@@ -77,7 +82,8 @@ public class Magazine implements LibraryItem {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o)
+    {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -86,13 +92,10 @@ public class Magazine implements LibraryItem {
     }
 
     @Override
-    public int hashCode() {
-        // TODO: Create int result variable and assign title.hashCode() to it.
-
-        // TODO: Multiply result by 31 and add issueNumber to it.
-
-        // TODO: Return the result.
-
-        throw new UnsupportedOperationException("Method not implemented");
+    public int hashCode()
+    {
+       int result = title.hashCode();
+       result = 31 * result + issueNumber;
+       return result;
     }
 }
